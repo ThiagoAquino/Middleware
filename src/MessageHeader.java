@@ -1,3 +1,4 @@
+
 import java.io.Serializable;
 
 public class MessageHeader implements Serializable {
@@ -10,6 +11,13 @@ public class MessageHeader implements Serializable {
 	
 	
 	
+	public MessageHeader(String magic, int version, boolean byteOrder, int messageType, long messageSize) {
+		this.magic = magic;
+		this.version = version;
+		this.byteOrder = byteOrder;
+		this.messageType = messageType;
+		this.messageSize = messageSize;
+	}
 	public String getMagic() {
 		return magic;
 	}
