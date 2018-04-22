@@ -1,9 +1,9 @@
 package mw;
 
 public class Termination {
+
 	private Object result;
-	
-	
+
 	public Termination() {}
 
 	public Object getResult() {
@@ -13,6 +13,5 @@ public class Termination {
 	public void setResult(Object result) {
 		this.result = result;
 	}
-	
-	
+
 }	

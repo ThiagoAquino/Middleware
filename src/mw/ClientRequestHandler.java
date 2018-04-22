@@ -28,10 +28,11 @@ public class ClientRequestHandler {
 
 	}
 
-	public Message receive()  throws IOException, InterruptedException, ClassNotFoundException {
+	public byte [] receive()  throws IOException, InterruptedException, ClassNotFoundException {
 		inFromServer = new ObjectInputStream(clientsocket.getInputStream());
-		Message retorno = (Message) inFromServer.readObject();
-		return retorno;
+		//Message retorno = (Message) inFromServer.readObject();
+		//return retorno;
+		return (byte[]) inFromServer.readObject();
 	}
 
 
@@ -52,6 +53,10 @@ public class ClientRequestHandler {
 
 	public void setPort(int port) {
 		this.port = port;
+	}
+
+	public void closeConnection() throws IOException {
+		this.clientsocket.close();
 	}
 
 }
