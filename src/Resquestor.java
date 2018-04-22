@@ -1,9 +1,16 @@
+import java.io.IOException;
 import java.net.UnknownHostException;
+
+import Message.Message;
+import Message.MessageBody;
+import Message.MessageHeader;
+import Message.RequestBody;
+import Message.RequestHeader;
 
 public class Resquestor {
 
-	public Termination invoke(Invocation inv) throws UnknownHostException. IOException, Throwable {
-		ClientRequestHandler crh = new ClienteRequesthandler(inv.getClientProxy().getHost(),inv.getClientProxy().getPort());
+	public Termination invoke(ClienteProxy inv) throws UnknownHostException, IOException, Throwable {
+		ClientRequestHandler crh = new ClientRequestHandler(inv.getHost(),inv.getPort());
 
 	Marshaller marshaller = new Marshaller();
 	Termination termination = new Termination();
@@ -34,6 +41,7 @@ public class Resquestor {
 	//return result to Client Proxy
 	termination.setResult(msgUnmarshalled.getBody().getReplyBody().getOperationResult());
 	
+	return termination;
 	}
 
 }
