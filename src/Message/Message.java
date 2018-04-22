@@ -5,10 +5,10 @@ import java.io.Serializable;
 public class Message implements Serializable {
 	private MessageHeader header;
 	private MessageBody body;
-	
-	
+
+
 	public Message() {};
-	
+
 	public Message(MessageHeader messageHeader, MessageBody messageBody) {
 		this.header = messageHeader;
 		this.body = messageBody;
@@ -29,5 +29,5 @@ public class Message implements Serializable {
 	public void setBody(MessageBody body) {
 		this.body = body;
 	}
-	
+
 }

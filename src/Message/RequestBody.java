@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class RequestBody implements Serializable{
+	
 	private ArrayList<Object> parameters = new ArrayList<Object>();
 
 	public RequestBody() {}
@@ -16,5 +17,4 @@ public class RequestBody implements Serializable{
 		this.parameters = parameters;
 	}
 
-	
 }

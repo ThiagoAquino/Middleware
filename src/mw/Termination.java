@@ -1,3 +1,4 @@
+package mw;
 
 public class Termination {
 	private Object result;
