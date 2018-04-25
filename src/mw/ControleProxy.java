@@ -1,6 +1,8 @@
 package mw;
 
-import Message.Message;
+import java.io.IOException;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 public class ControleProxy extends ClientProxy implements IControle {
 	
@@ -13,46 +15,54 @@ public class ControleProxy extends ClientProxy implements IControle {
 	}
 
 	@Override
-	public int up(int vol) {
+	public String changeChannel(int channel) throws Throwable {
+		Invocation inv = new Invocation();
+		Termination ter = new Termination();
+		ArrayList<Object> parameters = new ArrayList<Object>();
+		class Local {};
+		String methodName = null;
+		Requestor requestor = new Requestor();
 		
-        Resquestor req = new Resquestor();
-        Message msg = new Message();
-        Invocation inv = new Invocation();
-
-        
-        //Executar um serviço
-        //Passar o vol pela msg + tipo do serviço que no caso é aumentar
-        //E receber de volta o volume novo para retornar
-
-        inv.setId(this.ip);
-        inv.setPort(this.port);
-        inv.setMsg(msg);
-        
-        Message rMsg = req.invoke(inv);           
-
-		int nVol = rMsg.
+		methodName = Local.class.getEnclosingMethod().getName();
+		parameters.add(channel);
 		
-		return nVol;
+		//information sent to requestor
+		inv.setObjectId(this.getObjectId());
+		inv.setIpAddress(this.getHost());
+		inv.setPortNumber(this.getPort());
+		inv.setOperationName(methodName);
+		inv.setParameters(parameters);
+		
+		// invoke Requestor
+		ter = requestor.invoke(inv);
+		
+		// result sent back to Client
+		return (String) ter.getResult();
 	}
 
 	@Override
-	public int down(int vol) {
-		return vol--;
+	public String changeLevel(int level) throws Throwable {
+		Invocation inv = new Invocation();
+		Termination ter = new Termination();
+		ArrayList<Object> parameters = new ArrayList<Object>();
+		class Local {};
+		String methodName = null;
+		Requestor requestor = new Requestor();
+		
+		methodName = Local.class.getEnclosingMethod().getName();
+		parameters.add(level);
+		
+		//information sent to requestor
+		inv.setObjectId(this.getObjectId());
+		inv.setIpAddress(this.getHost());
+		inv.setPortNumber(this.getPort());
+		inv.setOperationName(methodName);
+		inv.setParameters(parameters);
+		
+		// invoke Requestor
+		ter = requestor.invoke(inv);
+		
+		return (String) ter.getResult();
 	}
-
-	@Override
-	public int nextChannel(int channel) {
-		return channel++;
-	}
-
-	@Override
-	public int previousChannel(int channel) {
-		return channel--;
-	}
-
-//	@Override
-//	public int changeChannel(int channel) {
-//		return null;
-//	}
 
 }

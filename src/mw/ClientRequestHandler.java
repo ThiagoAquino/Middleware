@@ -5,7 +5,6 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import Message.Message;
 
 public class ClientRequestHandler {
 	private String host;

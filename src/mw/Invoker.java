@@ -27,18 +27,18 @@ public class Invoker {
 
 			switch (msgUnmarshalled.getBody().getRequestHeader().getOperation()) {
 			//Mudar Canal
-			case "MC":
+			case "changeChannel":
 				int qtd = (int) msgUnmarshalled.getBody().getRequestBody().getParameters().get(0);
 				ter.setResult(rObj.changeChannel(qtd));
-				Message ChangedChannel = new Message(new MessageHeader("protocolo", 0 ,false,0,0), new MessageBody(null, null, new ReplyHeader("",0 ,0), new ReplyBody(ter.getResult())));
+				Message changedChannel = new Message(new MessageHeader("protocolo", 0 ,false,0,0), new MessageBody(null, null, new ReplyHeader("",0 ,0), new ReplyBody(ter.getResult())));
 
-				msgMarshalled = mrsh.marshall(ChangedChannel);
+				msgMarshalled = mrsh.marshall(changedChannel);
 				srh.send(msgMarshalled);
 
 				break;
 
 				//Mudar Volume
-			case "MV":
+			case "changeLevel":
 				int qtd1 = (int) msgUnmarshalled.getBody().getRequestBody().getParameters().get(0);
 				ter.setResult(rObj.changeLevel(qtd1));
 				Message changedLevel = new Message(new MessageHeader("protocolo", 0 ,false,0,0), new MessageBody(null, null, new ReplyHeader("",0 ,0), new ReplyBody(ter.getResult())));
