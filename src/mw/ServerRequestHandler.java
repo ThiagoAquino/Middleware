@@ -29,10 +29,10 @@ public class ServerRequestHandler {
 
 	}
 
-	public Message receive()  throws IOException, InterruptedException, ClassNotFoundException {
+	public byte [] receive()  throws IOException, InterruptedException, ClassNotFoundException {
 		inFromClient = new ObjectInputStream(clientSocket.getInputStream());
-		Message retorno = (Message) inFromClient.readObject();
-		return retorno;
+		//Message retorno = (Message) inFromClient.readObject();
+		return (byte[]) inFromClient.readObject();
 	}
 
 }

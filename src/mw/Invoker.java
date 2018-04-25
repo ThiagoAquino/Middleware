@@ -17,7 +17,7 @@ public class Invoker {
 
 		//Falta implementar
 		//Criar o objeto remoto
-		//TvImpl rObj = new TvImpl();
+		ControleImpl rObj = new ControleImpl();
 
 		while(true) {
 			//receive message
@@ -29,7 +29,7 @@ public class Invoker {
 			//Mudar Canal
 			case "MC":
 				int qtd = (int) msgUnmarshalled.getBody().getRequestBody().getParameters().get(0);
-				ter.result(rObj.MC(qtd));
+				ter.setResult(rObj.changeChannel(qtd));
 				Message ChangedChannel = new Message(new MessageHeader("protocolo", 0 ,false,0,0), new MessageBody(null, null, new ReplyHeader("",0 ,0), new ReplyBody(ter.getResult())));
 
 				msgMarshalled = mrsh.marshall(ChangedChannel);
@@ -40,10 +40,10 @@ public class Invoker {
 				//Mudar Volume
 			case "MV":
 				int qtd1 = (int) msgUnmarshalled.getBody().getRequestBody().getParameters().get(0);
-				ter.result(rObj.MV(qtd1));
-				Message ChangedVolume = new Message(new MessageHeader("protocolo", 0 ,false,0,0), new MessageBody(null, null, new ReplyHeader("",0 ,0), new ReplyBody(ter.getResult())));
+				ter.setResult(rObj.changeLevel(qtd1));
+				Message changedLevel = new Message(new MessageHeader("protocolo", 0 ,false,0,0), new MessageBody(null, null, new ReplyHeader("",0 ,0), new ReplyBody(ter.getResult())));
 
-				msgMarshalled = mrsh.marshall(ChangedVolume);
+				msgMarshalled = mrsh.marshall(changedLevel);
 				srh.send(msgMarshalled);				
 				break;
 			default:
