@@ -17,11 +17,16 @@ public class ControleProxy extends ClientProxy implements IControle {
 		
         Resquestor req = new Resquestor();
         Message msg = new Message();
+        Invocation inv = new Invocation();
 
+        
         //Executar um serviço
         //Passar o vol pela msg + tipo do serviço que no caso é aumentar
         //E receber de volta o volume novo para retornar
-        //inv: this.ip, this.port + msg
+
+        inv.setId(this.ip);
+        inv.setPort(this.port);
+        inv.setMsg(msg);
         
         Message rMsg = req.invoke(inv);           
 
