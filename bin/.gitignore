@@ -1,17 +1,2 @@
-/ClientProxy.class
-/ClientRequestHandler.class
-/Invoker.class
-/Marshaller.class
 /Message/
-/Message.class
-/MessageBody.class
-/MessageHeader.class
-/ReplyBody.class
-/ReplyHeader.class
-/RequestBody.class
-/RequestHeader.class
-/Resquestor.class
-/ServerRequestHandler.class
-/Termination.class
-/Client/
 /mw/

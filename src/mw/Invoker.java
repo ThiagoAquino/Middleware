@@ -46,6 +46,9 @@ public class Invoker {
 				msgMarshalled = mrsh.marshall(ChangedVolume);
 				srh.send(msgMarshalled);				
 				break;
+			default:
+				System.out.println("Case not expected in Invoker");
+				break;
 			}
 
 		}
