@@ -3,11 +3,11 @@ package middleware;
 import java.io.Serializable;
 
 public class AbsoluteObjectReference implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-	public String host;
-	public int port;
-	public int objectId;
+	private static final long serialVersionUID = 4196078280589928212L;
+	
+	private String host;
+	private int port;
+	private int objectId;
 
 	public AbsoluteObjectReference(String host, int port, int objectId) {
 		this.host = host;
