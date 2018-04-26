@@ -1,6 +1,6 @@
 package naming;
 
-import message.Message;
+import message.Message2;
 import middleware.ClientProxy;
 import middleware.Marshaller;
 import middleware.ServerRequestHandler;
@@ -13,7 +13,7 @@ public class NamingInvoker {
 		while (true) {
 			srh.create();
 			byte[] messageToBeUnmarshalled = srh.receive();
-			Message messageUnmarshalled = Marshaller.unmarshall(messageToBeUnmarshalled);
+			Message2 messageUnmarshalled = Marshaller.unmarshall(messageToBeUnmarshalled);
 			String methodName = messageUnmarshalled.getMethod();
 			String serviceName = null;
 			ClientProxy clientProxy = null;

@@ -1,9 +1,9 @@
-package middleware;
+package message;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class Message implements Serializable {
+public class Message2 implements Serializable {
 	private static final long serialVersionUID = 5L;
 
 	private int objectId;
@@ -11,13 +11,13 @@ public class Message implements Serializable {
 	private List<Object> parameters;
 	private Object result;
 
-	public Message(int objectId, String method, List<Object> parameters) {
+	public Message2(int objectId, String method, List<Object> parameters) {
 		this.objectId = objectId;
 		this.method = method;
 		this.parameters = parameters;
 	}
 
-	public Message(String method, List<Object> parameters) {
+	public Message2(String method, List<Object> parameters) {
 		this.method = method;
 		this.parameters = parameters;
 	}

@@ -16,12 +16,12 @@ public class NamingImpl implements INaming {
 	}
 
 	@Override
-	public void bind(String service, ClientProxy proxy) throws ClassNotFoundException, IOException {
+	public void bind(String service, ClientProxy cp) throws ClassNotFoundException, IOException {
 		if (this.lookUpTable.containsKey(service)) {
-			this.lookUpTable.get(service).addLast(proxy);
+			this.lookUpTable.get(service).addLast(cp);
 		} else {
 			LinkedList<ClientProxy> newService = new LinkedList<ClientProxy>();
-			newService.add(proxy);
+			newService.add(cp);
 			this.lookUpTable.put(service, newService);
 		}
 	}
@@ -34,11 +34,11 @@ public class NamingImpl implements INaming {
 			throw new Exception();
 		}
 
-		ClientProxy proxy = this.lookUpTable.get(service).getFirst();
+		ClientProxy cp = this.lookUpTable.get(service).getFirst();
 		this.lookUpTable.get(service).removeFirst();
-		this.lookUpTable.get(service).addLast(proxy);
+		this.lookUpTable.get(service).addLast(cp);
 
-		return proxy;
+		return cp;
 	}
 	
 }
