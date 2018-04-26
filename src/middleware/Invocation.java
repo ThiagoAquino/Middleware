@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 public class Invocation extends ClientProxy{
 
+	public Invocation(String host, int port, int objectId) {
+		super(host, port, objectId);
+		// TODO Auto-generated constructor stub
+	}
+
 	private static final long serialVersionUID = 1L;
 	private String ipAddress;
 	private int portNumber;
