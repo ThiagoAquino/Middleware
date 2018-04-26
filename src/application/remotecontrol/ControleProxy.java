@@ -47,24 +47,20 @@ public class ControleProxy extends ClientProxy implements IControle, Serializabl
 		return requestor.invoke(this, message).toString();
 	}
 
+
 	@Override
 	public String changeLevel(int level) throws Throwable {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-//	@Override
-//	public String changeLevel(int level) throws Throwable {
 //		Invocation inv = new Invocation();
-//		Termination ter = new Termination();
-//		ArrayList<Object> parameters = new ArrayList<Object>();
-//		class Local {};
-//		String methodName = null;
-//		Requestor requestor = new Requestor();
-//		
-//		methodName = Local.class.getEnclosingMethod().getName();
-//		parameters.add(level);
-//		
+		Termination ter = new Termination();
+		ArrayList<Object> parameters = new ArrayList<Object>();
+		class Local {};
+		String methodName = null;
+		Requestor requestor = new Requestor();
+		Message2 message = new Message2(this.getAor().getObjectId(), methodName, parameters);
+
+		methodName = Local.class.getEnclosingMethod().getName();
+		parameters.add(level);
+		
 //		//information sent to requestor
 //		inv.setObjectId(this.getObjectId());
 //		inv.setIpAddress(this.getHost());
@@ -74,8 +70,8 @@ public class ControleProxy extends ClientProxy implements IControle, Serializabl
 //		
 //		// invoke Requestor
 //		ter = requestor.invoke(inv);
-//		
-//		return (String) ter.getResult();
-//	}
+		
+		return requestor.invoke(this, message).toString();
+	}
 
 }

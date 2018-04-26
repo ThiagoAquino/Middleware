@@ -4,22 +4,24 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Message2 implements Serializable {
-	private static final long serialVersionUID = 5232674033479375617L;
+	
+	private static final long serialVersionUID = 666666L;
 
 	private int objectId;
 	private String method;
 	private List<Object> parameters;
 	private Object result;
 
-	public Message2(int objectId, String method, List<Object> parameters) {
+	
+	public Message2(int objectId, String HeaderMethod, List<Object> BodyParameters) {
 		this.objectId = objectId;
-		this.method = method;
-		this.parameters = parameters;
+		this.method = HeaderMethod;
+		this.parameters = BodyParameters;
 	}
 
-	public Message2(String method, List<Object> parameters) {
-		this.method = method;
-		this.parameters = parameters;
+	public Message2(String HeaderMethod, List<Object> BodyParameters) {
+		this.method = HeaderMethod;
+		this.parameters = BodyParameters;
 	}
 
 	public String getMethod() {
