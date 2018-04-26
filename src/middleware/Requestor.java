@@ -2,27 +2,18 @@ package middleware;
 
 import java.io.IOException;
 
-import message.Message2;
-import middleware.infrastructure.ClientRequestHandler;
+import middleware.ClientRequestHandler;
+import middleware.message.Message2;
 
 public class Requestor {
-	public Object invoke(ClientProxy cp, Message2 msg) throws IOException, ClassNotFoundException {
-		byte[] marshalledMessage;
-		byte[] msgToBeUnmarshalled;
-		
-		ClientRequestHandler crh = new ClientRequestHandler(cp.getAor().getHost(), cp.getAor().getPort());
-		
+	public Object invoke(ClientProxy proxy, Message2 message) throws IOException, ClassNotFoundException {
+		ClientRequestHandler crh = new ClientRequestHandler(proxy.getAor().getHost(), proxy.getAor().getPort());
 		crh.create();
-		
-		marshalledMessage = Marshaller.marshall(msg);
+		byte[] marshalledMessage = Marshaller.marshall(message);
 		crh.send(marshalledMessage);
-		
-		msgToBeUnmarshalled = crh.receive();
-		
+		byte[] msgToBeUnmarshalled = crh.receive();
 		crh.close();
-		
 		Message2 unmarshalledMessage = Marshaller.unmarshall(msgToBeUnmarshalled);
-		
 		return unmarshalledMessage.getResult();
 	}
 }

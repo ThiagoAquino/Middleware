@@ -1,10 +1,10 @@
-package message;
+package middleware.message;
 
 import java.io.Serializable;
 import java.util.List;
 
 public class Message2 implements Serializable {
-	private static final long serialVersionUID = 5L;
+	private static final long serialVersionUID = 5232674033479375617L;
 
 	private int objectId;
 	private String method;

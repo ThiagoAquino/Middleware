@@ -1,7 +1,7 @@
 package middleware;
 
-import application.ControleProxy;
-import message.Message;
+import application.remotecontrol.ControleProxy;
+import middleware.message.Message;
 
 public class ServidorNomesProxy extends ClientProxy {
 

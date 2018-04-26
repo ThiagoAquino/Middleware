@@ -1,4 +1,4 @@
-package message;
+package middleware.message;
 import java.io.Serializable;
 
 public class RequestHeader implements Serializable {

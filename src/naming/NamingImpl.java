@@ -8,7 +8,7 @@ import java.util.Map;
 import middleware.ClientProxy;
 
 public class NamingImpl implements INaming {
-	
+
 	private Map<String, LinkedList<ClientProxy>> lookUpTable;
 
 	public NamingImpl() {
@@ -16,29 +16,22 @@ public class NamingImpl implements INaming {
 	}
 
 	@Override
-	public void bind(String service, ClientProxy cp) throws ClassNotFoundException, IOException {
+	public void bind(String service, ClientProxy proxy) throws ClassNotFoundException, IOException {
 		if (this.lookUpTable.containsKey(service)) {
-			this.lookUpTable.get(service).addLast(cp);
+			this.lookUpTable.get(service).addLast(proxy);
 		} else {
 			LinkedList<ClientProxy> newService = new LinkedList<ClientProxy>();
-			newService.add(cp);
+			newService.add(proxy);
 			this.lookUpTable.put(service, newService);
 		}
 	}
 
 	@Override
 	public ClientProxy lookUp(String service) throws Exception {
-		LinkedList<ClientProxy> list = this.lookUpTable.get(service);
-
-		if (list == null) {
-			throw new Exception();
-		}
-
-		ClientProxy cp = this.lookUpTable.get(service).getFirst();
+		ClientProxy proxy = this.lookUpTable.get(service).getFirst();
 		this.lookUpTable.get(service).removeFirst();
-		this.lookUpTable.get(service).addLast(cp);
-
-		return cp;
+		this.lookUpTable.get(service).addLast(proxy);
+		return proxy;
 	}
-	
+
 }

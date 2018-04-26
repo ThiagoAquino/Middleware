@@ -6,12 +6,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import message.Message2;
+import middleware.message.Message2;
 
 public class Marshaller {
-	
 	public static byte[] marshall(Message2 message) throws IOException {
-		
 		ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
 		ObjectOutputStream objectStream = new ObjectOutputStream(byteStream);
 		objectStream.writeObject(message);
@@ -20,14 +18,9 @@ public class Marshaller {
 	}
 
 	public static Message2 unmarshall(byte[] message) throws IOException, ClassNotFoundException {
-		
 		ByteArrayInputStream byteStream = new ByteArrayInputStream(message);
 		ObjectInputStream objectStream = new ObjectInputStream(byteStream);
-	
-		Object r = objectStream.readObject();
-		Message2 msg = (Message2) r;
-		
-		return msg;
+
+		return (Message2) objectStream.readObject();
 	}
-	
 }

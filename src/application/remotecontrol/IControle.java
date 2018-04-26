@@ -1,4 +1,6 @@
-package application;
+package application.remotecontrol;
+
+import java.io.IOException;
 
 public interface IControle {
 	
@@ -9,5 +11,4 @@ public interface IControle {
 //	public int changeChannel(int channel);
 	
 	public String changeChannel(int channel) throws Throwable;
-	public String changeLevel(int level)throws Throwable;
-}
+	public String changeLevel(int level)throws Throwable;}
