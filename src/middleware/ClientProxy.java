@@ -3,7 +3,7 @@ package middleware;
 import java.io.Serializable;
 
 public class ClientProxy implements Serializable {
-	private static final long serialVersionUID = 5417417210462877448L;
+	private static final long serialVersionUID = 1L;
 
 	private AbsoluteObjectReference aor;
 

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Message implements Serializable {
-	private static final long serialVersionUID = 5232674033479375617L;
+	private static final long serialVersionUID = 5L;
 
 	private int objectId;
 	private String method;

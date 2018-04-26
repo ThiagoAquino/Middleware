@@ -3,7 +3,8 @@ package middleware;
 import java.io.Serializable;
 
 public class AbsoluteObjectReference implements Serializable {
-	private static final long serialVersionUID = 4196078280589928212L;
+	
+	private static final long serialVersionUID = 2L;
 	
 	private String host;
 	private int port;
